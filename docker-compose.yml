@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: secure_containerT
+    environment:
+      MYSQL_ROOT_PASSWORD: ethernos@09
+      MYSQL_DATABASE: secureAppT
+      MYSQL_USER: ethernos
+      MYSQL_PASSWORD: ethernos9
+    ports:
+      - "3707:3306"
+    volumes:
+      - mysql_secureApp2:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+volumes:
+  mysql_secureApp2:
